@@ -43,9 +43,36 @@ class Database{
    
     }
    
-             function data(){
+      //  showing database table query
+             function show(){
+                
+              $tabledata= "SELECT *FROM  $this->table";
+              $tableresult = $this->connection->query($tabledata);
+              
+              if($tableresult->num_rows > 0){
+                 return $tableresult;
+              }else{
+                   return false;
+              }
 
               }
+
+
+            //   delete table 
+
+            function delete($id){
+                  
+               $delete = "DELETE FROM $this->table WHERE ID = $id";
+
+               $deletetable = $this->connection->query($delete);
+
+               if($deletetable){
+                    echo ("table deleted");
+                    return true;
+               }else{
+                  return false;
+               }
+            }
            }
 
 ?>
